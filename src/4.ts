@@ -9,14 +9,14 @@ class Key {
 class Person {
   constructor(private key: Key) {}
 
-  getKey() {
+  getKey(): Key {
     return this.key;
   }
 }
 
 abstract class House {
   protected door: boolean;
-  protected tenants: Person[];
+  private tenants: Person[];
   constructor(protected key: Key) {
     this.door = false;
     this.tenants = [];
@@ -32,10 +32,6 @@ abstract class House {
 }
 
 class MyHouse extends House {
-  constructor(key: Key) {
-    super(key);
-  }
-
   openDoor(key: Key): boolean {
     if (key.getSiganture() === this.key.getSiganture()) {
       this.door = true;
